@@ -15,7 +15,8 @@ export function DashboardGrid({ className }: DashboardGridProps) {
     currentDashboard,
     isEditMode,
     updateLayout,
-    updateWidget
+    updateWidget,
+    removeWidget
   } = useDashboardStore();
 
   // Convert widgets to layout format for React-Grid-Layout
@@ -104,9 +105,7 @@ export function DashboardGrid({ className }: DashboardGridProps) {
                   config={widget.config}
                   isEditMode={isEditMode}
                   onConfigChange={(config) => updateWidget(widget.id, { config })}
-                  onRemove={() => {
-                    // Remove widget handled by BaseWidget
-                  }}
+                  onRemove={() => removeWidget(widget.id)}
                 />
               </WidgetErrorBoundary>
             </div>

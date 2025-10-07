@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
 import { useDashboardStore } from '../../store/dashboardStore';
+import { WidgetGallery } from './WidgetGallery';
 import { cn } from '../ui/utils';
 
 export function CustomizationPanel() {
@@ -118,25 +119,9 @@ export function CustomizationPanel() {
         </div>
       )}
 
-      {/* Widget Gallery Modal (TODO: Implement full gallery) */}
+      {/* Widget Gallery */}
       {showWidgetGallery && isEditMode && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40" onClick={() => setShowWidgetGallery(false)}>
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl" onClick={(e) => e.stopPropagation()}>
-            <Card>
-              <CardHeader>
-                <CardTitle>Add Widget</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Widget gallery coming soon...
-                </p>
-                <Button className="mt-4" onClick={() => setShowWidgetGallery(false)}>
-                  Close
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+        <WidgetGallery onClose={() => setShowWidgetGallery(false)} />
       )}
     </>
   );
