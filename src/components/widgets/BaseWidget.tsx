@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from '../ui/card';
 import { Button } from '../ui/button';
 import { cn } from '../ui/utils';
 import { WidgetProps } from '../../types/widget';
+import { WidgetConfigDialog } from './WidgetConfigDialog';
 
 interface BaseWidgetProps extends WidgetProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface BaseWidgetProps extends WidgetProps {
   isLoading?: boolean;
   error?: string;
   className?: string;
+  requiresMetric?: boolean;
 }
 
 export function BaseWidget({
@@ -26,14 +28,15 @@ export function BaseWidget({
   subtitle,
   isLoading = false,
   error,
-  className
+  className,
+  requiresMetric = true
 }: BaseWidgetProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [showConfigDialog, setShowConfigDialog] = useState(false);
 
   const handleSettingsClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // TODO: Open configuration dialog
-    console.log('Open settings for widget:', id);
+    setShowConfigDialog(true);
   };
 
   const handleRemoveClick = (e: React.MouseEvent) => {
@@ -151,6 +154,17 @@ export function BaseWidget({
         <div className="absolute bottom-2 left-2 text-[10px] text-muted-foreground/50 font-mono">
           {type} • {id.slice(0, 8)}
         </div>
+      )}
+
+      {/* Configuration Dialog */}
+      {onConfigChange && (
+        <WidgetConfigDialog
+          open={showConfigDialog}
+          onClose={() => setShowConfigDialog(false)}
+          config={config}
+          onSave={onConfigChange}
+          requiresMetric={requiresMetric}
+        />
       )}
     </Card>
   );
