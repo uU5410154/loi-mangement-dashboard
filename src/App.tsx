@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { DashboardHeader } from "./components/DashboardHeader";
 import { FilterPanel } from "./components/FilterPanel";
 import { ContractSummaryCard } from "./components/ContractSummaryCard";
+import { WeeklyOverviewCards } from "./components/WeeklyOverviewCards";
 import { KPICards } from "./components/KPICards";
 import { TrendCharts } from "./components/TrendCharts";
 import { DataQualityCharts } from "./components/DataQualityCharts";
@@ -55,18 +56,29 @@ export default function App() {
 
         {/* Main Content */}
         <main className="flex-1 p-6 space-y-8">
-          {/* Contract Summary Card - Top Left */}
+          {/* Weekly Overview - Top Section */}
+          <section>
+            <div className="mb-4">
+              <h2 className="text-xl font-semibold">ภาพรวมประจำสัปดาห์</h2>
+              <p className="text-sm text-muted-foreground">Weekly Overview</p>
+            </div>
+            <WeeklyOverviewCards />
+          </section>
+
+          <Separator />
+
+          {/* Contract Summary Card */}
           <section>
             <ContractSummaryCard />
           </section>
 
           <Separator />
 
-          {/* Hero KPI Cards */}
+          {/* Detailed KPI Cards */}
           <section>
             <div className="mb-4">
-              <h2 className="text-xl font-semibold">ภาพรวมประจำสัปดาห์</h2>
-              <p className="text-sm text-muted-foreground">Weekly Overview</p>
+              <h2 className="text-xl font-semibold">รายละเอียดตัวชี้วัด</h2>
+              <p className="text-sm text-muted-foreground">Detailed Metrics</p>
             </div>
             <KPICards />
           </section>

@@ -4,7 +4,11 @@
       "Bash(git init:*)",
       "Bash(git remote add:*)",
       "Bash(git add:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd time series line chart to Contract Summary card\n\n- Added LineChart component from recharts\n- Created generateContractTrendData function to generate time series data\n- Added custom LineTooltip for better data visualization\n- Updated ภาพรวมสัญญา section to show both donut chart and line chart side by side\n- Line chart displays trends for both Total Simplicity contracts and LOI Autocheck contracts\n- Uses color theme: #0471d1 (blue) for Total Simplicity, #fbc41e (yellow) for LOI Autocheck\n- Chart updates dynamically based on selected time range (7/30/90 days)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
